@@ -1,0 +1,35 @@
+
+
+
+<div class="container w-5 mt-4">
+    <h1>test test</h1>
+    <input type="search" name="serch" id="" class="mb-4 mt-4 br-5">
+    <!-- action="http://localhost:8080/upload" method="post" -->
+  <form  enctype="multipart/form-data">
+    
+    <input type="file" name="file" id="file" (change)="pointFile($event)" required>
+     <!-- (change)="pointFile($event.[target]="..")" -->
+    <input type="submit" (click)="onUpload()" value="Upload">
+    <!-- (click)="onUpload() -->
+  </form>
+  <div *ngIf="testIF" class="alert alert-success mt-4" role="alert">
+    <!-- {{ message }} *ngIf="message !='uploaded'" -->
+    {{ message }}
+  </div>
+  <div *ngIf="!testIF" class="alert alert-danger mt-4" role="alert">
+    <!-- {{ message }} *ngIf="message =='try again'" -->
+    {{ message }} + {{verify()}}
+  </div>
+    <div *ngFor="let file of filesArray">
+      <div class="card mt-4">
+          <div class="card-body">
+              <h5 class="card-title">{{file.name}}</h5>
+              <p class="card-text"><li> id : {{file.id}}</li></p>
+              <p class="card-text"><li> size : {{file.size}}</li></p>
+              <!-- <p class="card-text">{{file.content}}</p> -->
+              <p class="card-text"><li>uploaded at : {{file.uploadTime}} </li></p>
+              <a  href="http://localhost:8080/download/?id={{file.id}}" class="btn btn-primary">Download</a>
+          </div>
+      </div>
+    </div>
+  </div>
